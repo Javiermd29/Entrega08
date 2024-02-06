@@ -2,24 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
 
 public class Exercise01 : MonoBehaviour
 {
-    /*int sum = 0;
+    [SerializeField] private TextMeshProUGUI sumText;
 
-        for (int i = 2; i <= 100; i += 2)
-        {
-            sum += i;
-        }
-    Debug.Log("The sum of even numbers from 1 to 100 is: " + sum); */
-
-void Start()
+    void Start()
     {
-        
+        StartCoroutine(Exercise1());
     }
 
     void Update()
     {
         
+    }
+
+    private IEnumerator Exercise1()
+    {
+        int sum = 0;
+
+        for (int i = 1; i <= 10; i++)
+        {
+            sumText.SetText(sum + " + " + i  + " = " + sum);
+            sum += i;
+            yield return new WaitForSeconds(1f);
+        }
+
+        sumText.SetText("The sum of numbers from 1 to 10 is: " + sum);
+        
+
     }
 }
